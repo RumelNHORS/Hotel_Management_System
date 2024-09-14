@@ -1,0 +1,37 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+{% block content %}
+       
+    <div class="clearfix"></div>
+    <section class="padding-top-50 padding-bottom-70" style="background-color: #f9f9f9;">
+        <div class="container">
+            <div class="row justify-content-center align-items-center">
+                <div class="col-md-6">
+                    <h1 class="text-center margin-bottom-20 cinzel-decorative-bold">Sign In</h1>
+                    <p class="text-center margin-bottom-30">Welcome back. Sign in to continue.</p>
+                    
+                    <form method="POST" class="register">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" class="form-control" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required>
+                        </div>
+                        <button type="submit" style="width:100%" class="button border fw margin-top-10">Login</button>
+                    </form>
+
+                    <div class="text-center margin-top-20">
+                        <p>Don't have an account? <a href="{% url 'userauths:sign-up' %}">Sign up</a></p>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img src="{% static 'images/login.png' %}" alt="Login Image" class="img-fluid">
+                </div>
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}

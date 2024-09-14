@@ -1,0 +1,194 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+  .headline{
+    
+    font-weight:900; 
+    text-shadow: rgba(255,255,255,1) 0px 0px 50px;
+  }
+</style>
+<!-- Banner -->
+<div class="search_container_block main_search_block" data-background-image="images/home_section_1.jpg">
+  <div class="main_inner_search_block">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2 class="dm-sans headline" style="font-size: 100px; ">GuestGrove</h2>
+          {% comment %} <h2 class="dm-sans headline" style="font-size: 100px; ">GuestGrove</h2> {% endcomment %}
+          
+          <h2>Streamlining Operations for <br>Hoteliers & Guests</h2>
+          <h4></h4>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Set Featured List first -->
+
+<section class="fullwidth_block padding-top-50 padding-bottom-70" data-background-color="#f9f9f9">
+  <div class="container">
+    <div class="row slick_carousel_slider">
+      <div class="col-md-12">
+        <h3 class="headline_part centered margin-bottom-45">Top Featured Locations <span>Explore the greatest places in the
+            city</span> </h3>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="simple_slick_carousel_block utf_dots_nav">
+            {% for hotel in hotels %}
+                <div class="utf_carousel_item">
+                    <a href="{% url 'hotel:hotel_detail' hotel.slug %}" class="utf_listing_item-container compact">
+                        <div class="utf_listing_item">
+                            <img src="{{hotel.image.url}}" width="400%" height="" alt="">
+                            <span class="featured_tag">Featured</span>
+                            <span class="utf_open_now">Open Now</span>
+                            <div class="utf_listing_item_content">
+                                <div class="utf_listing_prige_block"></div>
+                                <h3>{{hotel.name}}</h3>
+                                <span><i class="fa fa-map-marker"></i> {{ hotel.address }}</span>
+                                <span><i class="fa fa-phone"></i> {{hotel.mobile}} </span>
+                                <span><i class="fa fa-envelope"></i> {{hotel.email}} </span>
+                            </div>
+                        </div>
+                        <div class="utf_star_rating_section" data-rating="4.5">
+                            <div class="utf_counter_star_rating">(4.5)</div>
+                            <span class="utf_view_count"><i class="fa fa-eye"></i>{{ hotel.views }}</span>
+                            <span class="like-icon"></span>
+                        </div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<div class="fullwidth_block search_categorie_block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="headline_part centered margin-top-75 margin-bottom-45">World Class Clasic Hotels <span>Recommended For You
+            </span> </h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <div class="container">
+      <div class="row">
+
+        {% for hotel in hotels %}
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="category_container_item_part">
+            <a href="{% url 'hotel:hotel_detail' hotel.slug %}" class="category_item_box">
+              <div class="featured-type featured">
+                Latest
+              </div>
+              <img src="{{hotel.image.url}}" alt="" />
+              <span class="category_item_box_btn">Browse</span>
+              <div class="category_content_box_part">
+                <h3>{{hotel.name}}</h3>
+                <span>{{hotel.name}}</span>
+              </div>
+            </a>
+          </div>
+        </div>
+        {% endfor %}
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="clearfix"></div>
+
+
+
+<section class="fullwidth_block padding-bottom-75">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h2 class="headline_part centered margin-top-80">How GuestGrove Works <span class="margin-top-10">Discover & connect
+            with great local businesses</span> </h2>
+      </div>
+    </div>
+    <div class="row container_icon">
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="box_icon_two box_icon_with_line"> <i class="im im-icon-Map-Marker2"></i>
+          <h3>Find Interesting Place</h3>
+          <p>Discover unique destinations and hidden gems with our extensive database of interesting places. Whether you're looking for a serene beach, a bustling city, or a quaint village, we have something for everyone. Explore new cultures, enjoy local cuisines, and create unforgettable memories on your next adventure.</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="box_icon_two box_icon_with_line"> <i class="im im-icon-Mail-Add"></i>
+          <h3>Contact Hotel Admins</h3>
+          <p>Reach out to property owners directly and get the information you need to make an informed decision. Our platform makes it easy to connect with owners, ask questions, and discuss any specific requirements you might have. Establish a direct line of communication to ensure your stay is perfectly tailored to your needs..</p>
+        </div>
+      </div>
+
+      <div class="col-md-4 col-sm-4 col-xs-12">
+        <div class="box_icon_two"> <i class="im im-icon-Administrator"></i>
+          <h3>Make a Reservation</h3>
+          <p>Secure your accommodation effortlessly through our user-friendly reservation system. Simply choose your preferred dates, select your desired property, and complete your booking in just a few clicks. Enjoy peace of mind with instant confirmation and prepare for a stress-free stay at your chosen destination.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="utf_testimonial_part fullwidth_block padding-top-75 padding-bottom-75 utf_cta_area2_block">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h3 class="headline_part centered"> What Our Customers Say <span class="margin-top-15">GuestGrove has revolutionized accommodation for travelers, making reservations seamless and hassle-free. Here's what our satisfied customers have to say...</span> </h3>
+      </div>
+    </div>
+  </div>
+  <div class="fullwidth_carousel_container_block margin-top-20">
+    <div class="utf_testimonial_carousel testimonials">
+      <div class="utf_carousel_review_part">
+        <div class="utf_testimonial_box">
+          <div class="testimonial">"GuestGrove made my travel experience so much better! Finding the perfect place to stay was quick and easy, and the reservation process was a breeze. Highly recommend!"</div>
+        </div>
+        <div class="utf_testimonial_author"> <img src="images/happy-client-01.jpg" alt="">
+          <h4>Denwen Evil <span>Web Developer</span></h4>
+        </div>
+      </div>
+      <div class="utf_carousel_review_part">
+        <div class="utf_testimonial_box">
+          <div class="testimonial">"As a frequent traveler, I appreciate how GuestGrove simplifies finding and booking accommodations. The platform is user-friendly and the customer service is excellent!"</div>
+        </div>
+        <div class="utf_testimonial_author"> <img src="images/happy-client-02.jpg" alt="">
+          <h4>Adam Alloriam <span>Web Developer</span></h4>
+        </div>
+      </div>
+      <div class="utf_carousel_review_part">
+        <div class="utf_testimonial_box">
+          <div class="testimonial">"GuestGrove takes the stress out of planning trips. Their comprehensive listings and easy reservation system ensure that I always find a great place to stay, no matter where I'm headed."</div>
+        </div>
+        <div class="utf_testimonial_author"> <img src="images/happy-client-03.jpg" alt="">
+          <h4>Illa Millia <span>Project Manager</span></h4>
+        </div>
+      </div>
+      <div class="utf_carousel_review_part">
+        <div class="utf_testimonial_box">
+          <div class="testimonial">"I've been using GuestGrove for all my travel accommodations and couldn't be happier. The ease of use and reliability of the platform make it my go-to choice every time."</div>
+        </div>
+        <div class="utf_testimonial_author"> <img src="images/happy-client-01.jpg" alt="">
+          <h4>Denwen Evil <span>Web Developer</span></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock content %}
